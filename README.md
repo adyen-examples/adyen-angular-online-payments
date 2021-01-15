@@ -72,7 +72,13 @@ export const environment = {
 };
 ```
 
-4. Visit [http://localhost:8080/](http://localhost:8080/) to select an integration type.
+4. Serve the Angular application:
+
+```
+ng serve --proxy-config proxy.conf.json
+```
+
+5. Visit [http://localhost:8080/](http://localhost:8080/) to select an integration type.
 
 To try out integrations with test card numbers and payment method details, see [Test card numbers](https://docs.adyen.com/development-resources/test-cards/test-card-numbers).
 
