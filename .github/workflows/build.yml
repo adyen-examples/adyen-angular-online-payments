@@ -23,7 +23,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-      working-directory: checkout
+        path: checkout
     - name: npm install
       run: npm install
       working-directory: checkout
