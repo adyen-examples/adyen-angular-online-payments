@@ -23,9 +23,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
+    - name: npm install
+      run: npm install
       working-directory: checkout
-    - run: cd checkout; npm run build --if-present
+    - run: npm run build --if-present
       working-directory: checkout
-    - run: cd checkout; npm run test
+    - run: npm run test
       working-directory: checkout
