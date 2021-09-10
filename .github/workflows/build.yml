@@ -44,5 +44,3 @@ jobs:
       working-directory: checkout
     - run: npm run build --if-present
       working-directory: checkout
-    - run: npm run test
-      working-directory: checkout
