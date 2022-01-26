@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 export class CheckoutComponent implements OnInit {
   @ViewChild('hook', { static: true }) hook: ElementRef;
   type: string = '';
-  clientKey: string = environment.clientKey as string;
+  clientKey: string = environment.adyenClientKey as string;
 
   constructor(
     private route: ActivatedRoute,
