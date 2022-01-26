@@ -21,7 +21,7 @@ dotenv.config({
 
 // Adyen Node.js API library boilerplate (configuration, etc.)
 const config = new Config();
-config.apiKey = process.env.API_KEY;
+config.apiKey = process.env.ADYEN_API_KEY;
 const client = new Client({ config });
 client.setEnvironment("TEST");
 const checkout = new CheckoutAPI(client);
@@ -33,7 +33,7 @@ app.post("/api/getPaymentMethods", async (req, res) => {
   try {
     const response = await checkout.paymentMethods({
       channel: "Web",
-      merchantAccount: process.env.MERCHANT_ACCOUNT,
+      merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT,
     });
     res.json(response);
   } catch (err) {
@@ -56,7 +56,7 @@ app.post("/api/initiatePayment", async (req, res) => {
     const response = await checkout.payments({
       amount: { currency, value: 1000 }, // value is 10€ in minor units
       reference: orderRef, // required
-      merchantAccount: process.env.MERCHANT_ACCOUNT, // required
+      merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       channel: "Web", // required
       additionalData: {
         // required for 3ds2 native flow
