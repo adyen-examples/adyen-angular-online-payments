@@ -2,7 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
 const { v4: uuidv4 } = require('uuid')
-const { Client, Config, CheckoutAPI } = require("@adyen/api-library");
+const { Client, Config, CheckoutAPI, hmacValidator } = require("@adyen/api-library");
 
 // init app
 const app = express();
@@ -112,7 +112,7 @@ app.post("/api/webhooks/notifications", async (req, res) => {
       } else {
         // invalid hmac: do not send [accepted] response
         console.log("Invalid HMAC signature: " + notification);
-        throw new Error("Invalid HMAC signature")
+        res.status(401).send('Invalid HMAC signature');
     }
 });
 
