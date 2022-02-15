@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  clientKey: "YOUR_CLIENT_KEY"
+  adyenClientKey: "YOUR_CLIENT_KEY"
 };
 
 /*

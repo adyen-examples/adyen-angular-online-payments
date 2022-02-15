@@ -25,7 +25,7 @@ Each demo leverages Adyen's API Library for Node.js ([GitHub](https://github.com
 
 ## Requirements
 
-Node.js 8.0+
+Node.js 17.0+
 
 ## Installation
 
@@ -49,12 +49,17 @@ npm install
 
 ## Usage
 
-1. In `node-api`, create a `./.env` file with your [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key), [Client Key](https://docs.adyen.com/user-management/client-side-authentication) - Remember to add `http://localhost:8080` as an origin for client key, and merchant account name (all credentials are in string format):
+1. Create a `./.env` file with all required configuration
+  - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key)
+  - [Merchant Account](https://docs.adyen.com/account/account-structure)
+  - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures)
+
+Remember to include `http://localhost:8080` in the list of Allowed Origins
 
 ```
-API_KEY="your_API_key_here"
-MERCHANT_ACCOUNT="your_merchant_account_here"
-CLIENT_KEY="your_client_key_here"
+ADYEN_API_KEY="your_API_key_here"
+ADYEN_MERCHANT_ACCOUNT="your_merchant_account_here"
+ADYEN_HMAC_KEY="your_hmac_key_here"
 ```
 
 2. Start the Express server:
@@ -63,12 +68,12 @@ CLIENT_KEY="your_client_key_here"
 npm start
 ```
 
-3. In `checkout`, open `src/environments/environment.ts` and add your client key:
+3. In `checkout`, open `src/environments/environment.ts` and add your [Client Key](https://docs.adyen.com/user-management/client-side-authentication):
 
 ```js
 export const environment = {
   production: false,
-  clientKey: "YOUR_CLIENT_KEY"
+  adyenClientKey: "YOUR_CLIENT_KEY"
 };
 ```
 
