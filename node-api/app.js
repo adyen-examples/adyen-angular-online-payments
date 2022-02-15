@@ -91,6 +91,8 @@ app.all("/api/handleShopperRedirect", async (req, res) => {
 
 app.post("/api/webhooks/notifications", async (req, res) => {
 
+  console.log("/api/webhooks/notifications");
+
   // YOUR_HMAC_KEY from the Customer Area
   const hmacKey = process.env.ADYEN_HMAC_KEY;
   const validator = new hmacValidator()
