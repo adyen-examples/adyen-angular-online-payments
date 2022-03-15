@@ -28,6 +28,22 @@ const client = new Client({ config });
 client.setEnvironment("TEST"); // change to LIVE for production
 const checkout = new CheckoutAPI(client);
 
+// Verify app is running
+app.get('/test', (req,res) => {
+    res.send('App Works !!!!');
+});
+
+// Homepage
+app.get('/', (req,res) => {
+  res.sendFile("/app/checkout/dist/checkout/index.html")
+});
+
+// Result pages
+app.get('/result/*', (req,res) => {
+  res.sendFile("/app/checkout/dist/checkout/index.html")
+});
+
+
 /* ################# API ENDPOINTS ###################### */
 
 // Invoke /sessions endpoint
