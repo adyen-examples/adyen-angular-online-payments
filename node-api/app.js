@@ -13,6 +13,8 @@ app.use(express.json());
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
+app.use(express.static("/app/checkout/dist/checkout/"));
+
 // enables environment variables by
 // parsing the .env file and assigning it to process.env
 dotenv.config({
