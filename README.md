@@ -49,7 +49,7 @@ npm install
 
 ## Usage
 
-1. Create a `./.env` file with all required configuration
+1. Create a `.env` file with all required configuration
   - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key)
   - [Merchant Account](https://docs.adyen.com/account/account-structure)
   - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures)
@@ -65,7 +65,8 @@ ADYEN_HMAC_KEY="your_hmac_key_here"
 2. Start the Express server:
 
 ```
-npm start
+$ cd node-api
+$ npm start
 ```
 
 3. In `checkout`, open `src/environments/environment.ts` and add your [Client Key](https://docs.adyen.com/user-management/client-side-authentication):
@@ -80,7 +81,8 @@ export const environment = {
 4. Serve the Angular application:
 
 ```
-ng serve --proxy-config proxy.conf.json
+$ cd checkout
+$ ng serve --proxy-config proxy.conf.json
 ```
 
 5. Visit [http://localhost:8080/](http://localhost:8080/) to select an integration type.
