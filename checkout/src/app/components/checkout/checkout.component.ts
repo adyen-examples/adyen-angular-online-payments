@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
 import AdyenCheckout from '@adyen/adyen-web';
 import { environment } from '../../../environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-checkout',
@@ -13,13 +14,13 @@ export class CheckoutComponent implements OnInit {
   type: string = '';
   sessionId: string = '';
   redirectResult: string = '';
-
-  clientKey: string = environment.adyenClientKey as string;
+  clientKey: string = '';
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private http: HttpClient
   ) {
     this.hook = new ElementRef('');
   }
@@ -50,6 +51,14 @@ export class CheckoutComponent implements OnInit {
     this.type = this.route.snapshot.queryParamMap.get('type') || '';
     this.sessionId = this.route.snapshot.queryParamMap.get('sessionId') || '';
     this.redirectResult = this.route.snapshot.queryParamMap.get('redirectResult') || '';
+
+    // obtain ADYEN_CLIENT_KEY
+    this.http
+      .get<any>('/api/config', {observe: 'response'})
+      .subscribe(resp => {
+        this.clientKey = resp.body.api_key;
+    });
+
 
     if (!this.sessionId) {
 

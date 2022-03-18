@@ -46,6 +46,11 @@ app.get('/result/*', (req,res) => {
 
 /* ################# API ENDPOINTS ###################### */
 
+// return ADYEN_CLIENT_KEY (used on front-end)
+app.get('/api/config', (req,res) => {
+  res.send(`{"api_key":"${process.env.ADYEN_CLIENT_KEY}"}`);
+});
+
 // Invoke /sessions endpoint
 app.post("/api/sessions", async (req, res) => {
 
