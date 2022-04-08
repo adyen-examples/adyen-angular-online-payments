@@ -1,8 +1,11 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const morgan = require("morgan");
-const { v4: uuidv4 } = require('uuid')
+const { v4: uuidv4 } = require('uuid');
 const { Client, Config, CheckoutAPI, hmacValidator } = require("@adyen/api-library");
+
+// home folder (used when running Node on Docker and Gitpod)
+const root_folder = "/workspace/adyen-angular-online-payments";
 
 // init app
 const app = express();
@@ -13,7 +16,7 @@ app.use(express.json());
 // Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static("/app/checkout/dist/checkout/"));
+app.use(express.static(root_folder + "/checkout/dist/checkout/"));
 
 // enables environment variables by
 // parsing the .env file and assigning it to process.env
@@ -35,12 +38,12 @@ app.get('/test', (req,res) => {
 
 // Homepage
 app.get('/', (req,res) => {
-  res.sendFile("/app/checkout/dist/checkout/index.html")
+  res.sendFile(root_folder + "/checkout/dist/checkout/index.html")
 });
 
 // Result pages
 app.get('/result/*', (req,res) => {
-  res.sendFile("/app/checkout/dist/checkout/index.html")
+  res.sendFile(root_folder + "/checkout/dist/checkout/index.html")
 });
 
 
@@ -63,7 +66,7 @@ app.post("/api/sessions", async (req, res) => {
       countryCode: "NL",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
       reference: orderRef, // required: your Payment Reference
-      returnUrl: `http://localhost:8080/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
+      returnUrl: `http://${req.headers.host}/api/handleShopperRedirect?orderRef=${orderRef}` // set redirect URL required for some payment methods
     });
 
     res.json(response);
