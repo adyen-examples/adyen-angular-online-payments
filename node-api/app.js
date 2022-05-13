@@ -131,9 +131,15 @@ app.post("/api/webhooks/notifications", async (req, res) => {
 
     const notification = notificationRequestItem.NotificationRequestItem
 
-    // Handle the notification
-    if( validator.validateHMAC(notification, hmacKey) ) {
-      // Process the notification based on the eventCode
+    if (!hmacKey) {
+      console.log("hmacKey not configured. unable to verify intergity");
+      const merchantReference = notification.merchantReference;
+      const eventCode = notification.eventCode;
+      console.log('merchantReference:' + merchantReference + " eventCode:" + eventCode);
+    } else {
+      // Handle the notification
+      if (validator.validateHMAC(notification, hmacKey)) {
+        // Process the notification based on the eventCode
         const merchantReference = notification.merchantReference;
         const eventCode = notification.eventCode;
         console.log('merchantReference:' + merchantReference + " eventCode:" + eventCode);
@@ -141,8 +147,9 @@ app.post("/api/webhooks/notifications", async (req, res) => {
         // invalid hmac: do not send [accepted] response
         console.log("Invalid HMAC signature: " + notification);
         res.status(401).send('Invalid HMAC signature');
+      }
     }
-});
+  });
 
   res.send('[accepted]')
 });

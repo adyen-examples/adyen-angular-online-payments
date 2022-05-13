@@ -98,6 +98,18 @@ $ ng serve --proxy-config proxy.conf.json
 
 To try out integrations with test card numbers and payment method details, see [Test card numbers](https://docs.adyen.com/development-resources/test-cards/test-card-numbers).
 
+## Docker
+Build and run locallly with the following:
+
+```
+$ docker build -t adyen-demo-app --force-rm .
+
+$ docker run -p 8080:8080 -e PORT=8080 -e ADYEN_API_KEY=<APIKEY>  -e ADYEN_MERCHANT_ACCOUNT=<MERCH-ACT>  -e ADYEN_CLIENT_KEY=<CLIENTKEY> -i adyen-demo-app
+```
+
+Visit [http://localhost:8080/](http://localhost:8080/) to select an integration type.
+
+
 ## Contributing
 
 We commit all our new features directly into our GitHub repository. Feel free to request or suggest new features or code changes yourself as well!
