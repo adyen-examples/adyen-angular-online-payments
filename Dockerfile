@@ -2,7 +2,8 @@ FROM node:16-alpine AS ui-build
 
 WORKDIR /workspace/adyen-angular-online-payments
 COPY checkout/ ./checkout/
-RUN cd checkout && npm install @angular/cli && npm install && npm run build
+RUN cd checkout && npm install 
+RUN cd checkout && npm run build
 
 FROM node:16-alpine AS server-build
 
