@@ -120,6 +120,8 @@ app.all("/api/handleShopperRedirect", async (req, res) => {
 
 /* ################# WEBHOOK ###################### */
 
+// Process incoming Webhook notification: get NotificationRequestItem, validate HMAC signature,
+// consume the event asynchronously, send response ["accepted"]
 app.post("/api/webhooks/notifications", async (req, res) => {
 
   console.log("/api/webhooks/notifications");
@@ -131,26 +133,36 @@ app.post("/api/webhooks/notifications", async (req, res) => {
   const notificationRequest = req.body;
   const notificationRequestItems = notificationRequest.notificationItems
 
-  // Handling multiple notificationRequests
-  notificationRequestItems.forEach(function(notificationRequestItem) {
+  // fetch first (and only) NotificationRequestItem
+  const notification = notificationRequestItems[0].NotificationRequestItem
+  console.log(notification)
 
-    const notification = notificationRequestItem.NotificationRequestItem
+  // Handle the notification
+  if( validator.validateHMAC(notification, hmacKey) ) {
+    // valid hmac: process event
+    const merchantReference = notification.merchantReference;
+    const eventCode = notification.eventCode;
+    console.log("merchantReference:" + merchantReference + " eventCode:" + eventCode);
 
-    // Handle the notification
-    if( validator.validateHMAC(notification, hmacKey) ) {
-      // Process the notification based on the eventCode
-        const merchantReference = notification.merchantReference;
-        const eventCode = notification.eventCode;
-        console.log('merchantReference:' + merchantReference + " eventCode:" + eventCode);
-      } else {
-        // invalid hmac: do not send [accepted] response
-        console.log("Invalid HMAC signature: " + notification);
-        res.status(401).send('Invalid HMAC signature');
-    }
+    // consume event asynchronously
+    consumeEvent(notification);
+
+    // acknowledge event has been consumed
+    res.send('[accepted]')
+
+  } else {
+    // invalid hmac: do not send [accepted] response
+    console.log("Invalid HMAC signature: " + notification);
+    res.status(401).send('Invalid HMAC signature');
+  }
+
 });
 
-  res.send('[accepted]')
-});
+// process payload asynchronously
+function consumeEvent(notification) {
+  // add item to DB, queue or different thread
+  
+}
 
 
 /* ################# end WEBHOOK ###################### */
