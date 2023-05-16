@@ -1,4 +1,4 @@
-# Adyen [online payment](https://docs.adyen.com/checkout) integration demos
+# Adyen [online payment](https://docs.adyen.com/online-payments) integration demos
 
 ## Run this integration in seconds using [Gitpod](https://gitpod.io/)
 
@@ -13,17 +13,16 @@ _NOTE: To allow the Adyen Drop-In and Components to load, you have to add `https
 
 ## Details
 
-
 This repository includes examples of PCI-compliant UI integrations for online payments with Adyen. Within this demo app, you'll find a simplified version of an e-commerce website, complete with commented code to highlight key features and concepts of Adyen's API. Check out the underlying code to see how you can integrate Adyen to give your shoppers the option to pay with their preferred payment methods, all in a seamless checkout experience.
 
 ![Card checkout demo](checkout/src/assets/images/cardcheckout.gif)
 
 ## Supported Integrations
 
-**Angular + Express** demos of the following client-side integrations are currently available in this repository:
+[Online payments](https://docs.adyen.com/online-payments) **Angular + Express** demos of the following client-side integrations are currently available in this repository:
 
-- [Drop-in](https://docs.adyen.com/checkout/drop-in-web)
-- [Component](https://docs.adyen.com/checkout/components-web)
+- Drop-in
+- Components
   - ACH
   - Alipay
   - Boleto Bancário
