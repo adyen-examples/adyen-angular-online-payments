@@ -1,6 +1,10 @@
 version: 2
 updates:
   - package-ecosystem: "npm" 
-    directory: "/" 
+    directory: "/checkout" 
     schedule:
-      interval: "daily"
+      interval: "weekly"
+  - package-ecosystem: "npm" 
+    directory: "/node-api" 
+    schedule:
+      interval: "weekly"
