@@ -10,7 +10,7 @@ on:
       - .gitignore
       - .gitpod.yml
       - LICENSE    
-  pull_request_target:
+  pull_request:
     branches: [ main ]
     paths-ignore:
       - '**/README.md'
