@@ -61,7 +61,7 @@ app.post("/api/sessions", async (req, res) => {
     // unique ref for the transaction
     const orderRef = uuidv4();
     // Ideally the data passed here should be computed based on business logic
-    const response = await checkout.sessions({
+    const response = await checkout.PaymentsApi.sessions({
       amount: { currency: "EUR", value: 10000 }, // value is 100€ in minor units
       countryCode: "NL",
       merchantAccount: process.env.ADYEN_MERCHANT_ACCOUNT, // required
@@ -93,7 +93,7 @@ app.all("/api/handleShopperRedirect", async (req, res) => {
   }
 
   try {
-    const response = await checkout.paymentsDetails({ details });
+    const response = await checkout.PaymentsApi.paymentsDetails({ details });
     // Conditionally handle different result codes for the shopper
     switch (response.resultCode) {
       case "Authorised":

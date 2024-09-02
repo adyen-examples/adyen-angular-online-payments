@@ -1,5 +1,5 @@
-@import "~bootstrap/dist/css/bootstrap.css";
-@import "~@adyen/adyen-web/dist/adyen.css";
+@import "bootstrap/dist/css/bootstrap.css";
+@import "@adyen/adyen-web/dist/adyen.css";
 
 /* General page body */
 
