@@ -14,7 +14,7 @@
   },
   "private": true,
   "dependencies": {
-    "@adyen/adyen-web": "5.60.0",
+    "@adyen/adyen-web": "5.68.0",
     "@angular/animations": "~18.2.2",
     "@angular/common": "~18.2.2",
     "@angular/compiler": "~18.2.2",
