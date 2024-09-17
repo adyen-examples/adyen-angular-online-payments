@@ -50,7 +50,7 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~5.4.5",
+    "typescript": "~5.5.4",
     "jszip": "~3.8.0",
     "ansi-regex": ">=5.0.1"
   }
