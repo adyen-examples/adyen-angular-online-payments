@@ -4,7 +4,7 @@
     "cpus": 4
   },
   "updateContentCommand": "npm install -g @angular/cli",
-  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "postAttachCommand": "bash .devcontainer/setup.sh",
   "portsAttributes": {
     "8080": {
       "label": "Angular Online Payments Sample App",
