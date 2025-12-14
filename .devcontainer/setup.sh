@@ -1,16 +1,9 @@
 #!/bin/bash
-# Adyen Angular Online Payments - Devcontainer Setup Script
+# Adyen Angular Online Payments - Devcontainer setup steps
 set -euo pipefail
 
-echo "Setting up Adyen Angular Online Payments..."
-
-# Install dependencies
-echo "Installing dependencies..."
-cd checkout && npm install && cd ..
-cd node-api && npm install && cd ..
-
 echo ""
-echo "Setup complete!"
+echo "Dependencies installed!"
 echo ""
 echo "Before running the server, create a .env file in the node-api directory:"
 echo "   cp .env.example node-api/.env"
