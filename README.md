@@ -36,10 +36,10 @@ npm install
 ## Usage
 
 1. Create a `.env` file with all required configuration
-  - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key)
-  - [Client Key](https://docs.adyen.com/user-management/client-side-authentication) 
-  - [Merchant Account](https://docs.adyen.com/account/account-structure)
-  - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures)
+  - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key) (required)
+  - [Client Key](https://docs.adyen.com/user-management/client-side-authentication) (required)
+  - [Merchant Account](https://docs.adyen.com/account/account-structure) (required)
+  - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures) (optional, recommended)
 
 Remember to include `http://localhost:8080` in the list of Allowed Origins
 

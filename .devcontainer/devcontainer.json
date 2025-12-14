@@ -1,0 +1,20 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:dev-20-bookworm",
+  "hostRequirements": {
+    "cpus": 4
+  },
+  "updateContentCommand": "npm install -g @angular/cli",
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "portsAttributes": {
+    "8080": {
+      "label": "Angular Online Payments Sample App",
+      "onAutoForward": "notify"
+    },
+    "3000": {
+      "label": "Node.js API Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "forwardPorts": [8080, 3000]
+}
+  
