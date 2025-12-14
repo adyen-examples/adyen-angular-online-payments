@@ -1,5 +1,8 @@
 # Adyen [online payment](https://docs.adyen.com/online-payments) integration demos
 
+[![Angular Build](https://github.com/adyen-examples/adyen-angular-online-payments/actions/workflows/build.yml/badge.svg)](https://github.com/adyen-examples/adyen-angular-online-payments/actions/workflows/build.yml) 
+[![E2E (Playwright)](https://github.com/adyen-examples/adyen-angular-online-payments/actions/workflows/e2e.yml/badge.svg)](https://github.com/adyen-examples/adyen-angular-online-payments/actions/workflows/e2e.yml)
+
 ## Details
 
 This repository showcases a PCI-compliant integration of the [Sessions Flow](https://docs.adyen.com/online-payments/build-your-integration/additional-use-cases/), the default integration that we recommend for merchants. Explore this simplified e-commerce demo to discover the code, libraries and configuration you need to enable various payment options in your checkout experience.  
@@ -12,6 +15,13 @@ The demo leverages Adyen's API Library for Node.js ([GitHub](https://github.com/
 
 Node.js 20.0+  
 Angular 18+
+
+## Run with GitHub Codespaces
+This repository is configured to work with GitHub Codespaces. Click the badge below to launch a Codespace with all dependencies pre-installed.
+
+[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://github.com/codespaces/new/adyen-examples/adyen-anqular-online-payments?ref=main&devcontainer_path=.devcontainer%2Fdevcontainer.json)
+
+For detailed setup instructions, see the [GitHub Codespaces Instructions](https://github.com/adyen-examples/.github/blob/main/pages/codespaces-instructions.md).
 
 ## Installation
 
@@ -36,10 +46,10 @@ npm install
 ## Usage
 
 1. Create a `.env` file with all required configuration
-  - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key)
-  - [Client Key](https://docs.adyen.com/user-management/client-side-authentication) 
-  - [Merchant Account](https://docs.adyen.com/account/account-structure)
-  - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures)
+  - [API key](https://docs.adyen.com/user-management/how-to-get-the-api-key) (required)
+  - [Client Key](https://docs.adyen.com/user-management/client-side-authentication) (required)
+  - [Merchant Account](https://docs.adyen.com/account/account-structure) (required)
+  - [HMAC Key](https://docs.adyen.com/development-resources/webhooks/verify-hmac-signatures) (optional, recommended)
 
 Remember to include `http://localhost:8080` in the list of Allowed Origins
 
