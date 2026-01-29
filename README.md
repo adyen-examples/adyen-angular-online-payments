@@ -54,10 +54,10 @@ npm install
 Remember to include `http://localhost:8080` in the list of Allowed Origins
 
 ```
-ADYEN_API_KEY="your_API_key_here"
-ADYEN_MERCHANT_ACCOUNT="your_merchant_account_here"
-ADYEN_CLIENT_KEY="your_client_key_here"
-ADYEN_HMAC_KEY="your_hmac_key_here"
+ADYEN_API_KEY="your_adyen_api_key_here"
+ADYEN_MERCHANT_ACCOUNT="your_adyen_merchant_account_here"
+ADYEN_CLIENT_KEY="your_adyen_client_key_here"
+ADYEN_HMAC_KEY="your_adyen_hmac_key_here"
 
 ```
 
