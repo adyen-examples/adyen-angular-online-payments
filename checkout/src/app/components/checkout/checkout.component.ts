@@ -1,8 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../api.service';
-import AdyenCheckout from '@adyen/adyen-web';
-import { environment } from '../../../environments/environment';
+import { Card, Dropin, PayPal, AdyenCheckout } from '@adyen/adyen-web';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -68,7 +67,10 @@ export class CheckoutComponent implements OnInit {
             // Create AdyenCheckout using Sessions response
             const checkout = await this.createAdyenCheckout(res)
 
-            await checkout.create(this.type).mount(this.hook.nativeElement);
+            const dropin = new Dropin(checkout, {
+              paymentMethodComponents: [Card, PayPal],
+              paymentMethodsConfiguration: { /** Configurations **/}
+            }).mount(this.hook.nativeElement);
         }),
         (async error => {
           console.log('Error is: ', error);
@@ -87,7 +89,7 @@ export class CheckoutComponent implements OnInit {
       const configuration = {
           clientKey: this.clientKey,
           locale: "en_US",
-          environment: "test",  // change to live for production
+          environment: "test" as "test",  // change to live for production
           showPayButton: true,
           session: session,
           paymentMethodsConfiguration: {
@@ -130,7 +132,7 @@ export class CheckoutComponent implements OnInit {
         const checkout = await this.createAdyenCheckout({id: this.sessionId});
 
         // Submit the extracted redirectResult (to trigger onPaymentCompleted() handler)
-        checkout.submitDetails({details: this.redirectResult});
+        checkout.submitDetails({ details: { redirectResult: this.redirectResult } });
     } catch (error) {
         console.error(error);
         alert("Error occurred. Look at console for details");
