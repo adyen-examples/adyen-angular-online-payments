@@ -88,7 +88,7 @@ export class CheckoutComponent implements OnInit {
           clientKey: this.clientKey,
           locale: "en_US",
           environment: "test",  // change to live for production
-          applicationName: "adyen-angular-online-payments checkout-example adyen-web/5.68.0",
+          applicationName: "[adyen-angular-online-payments checkout-example adyen-web/5.68.0]",
           showPayButton: true,
           session: session,
           paymentMethodsConfiguration: {
