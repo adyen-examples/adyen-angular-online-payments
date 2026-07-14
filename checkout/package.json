@@ -31,7 +31,7 @@
     "rxjs": "~6.6.0",
     "tar": "^6.2.1",
     "tslib": "^2.0.0",
-    "ansi-regex": ">=5.0.1"
+    "ansi-regex": ">=6.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~18.2.2",
@@ -52,6 +52,6 @@
     "tslint": "~6.1.0",
     "typescript": "~5.5.4",
     "jszip": "~3.8.0",
-    "ansi-regex": ">=5.0.1"
+    "ansi-regex": ">=6.1.0"
   }
 }
